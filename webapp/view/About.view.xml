@@ -1,0 +1,130 @@
+<!-- <mvc:View  controllerName="idflex.flex.controller.About"
+xmlns:m="sap.m"
+     displayBlock="true"
+	xmlns:mvc="sap.ui.core.mvc">
+    <m:Page 
+   >
+   <m:content>
+   <m:Text text="dfg"/>
+   </m:content>
+   </m:Page>
+    </mvc:View > -->
+
+    <mvc:View 
+      controllerName="idflex.flex.controller.About"
+xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc">
+	<ObjectPageLayout
+		id="ObjectPageLayout"
+		showTitleInHeaderContent="true"
+		alwaysShowContentHeader="false"
+		preserveHeaderStateOnScroll="false"
+		headerContentPinnable="true"
+		isChildPage="true"
+		upperCaseAnchorBar="false">
+        <headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+
+            <expandedHeading>
+					<m:Title text="{Data6>/0/Name}" wrapping="true" class="sapUiSmallMarginEnd"/>
+				</expandedHeading>
+
+				<snappedHeading>
+					<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+						<m:FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+							<f:Avatar
+								src="https://ui5.sap.com/{products>ProductPicUrl}"
+								displaySize="S"
+								displayShape="Square"
+								class="sapUiTinyMarginEnd"/>
+							<m:Title text="" wrapping="true"/>
+						</m:FlexBox>
+					</m:FlexBox>
+				</snappedHeading>
+
+
+				<actions>
+					<m:ToggleButton
+						text="Edit"
+						type="Emphasized"
+                        press=".onEditToggleButtonPress"/>
+					<m:Button
+						text="Delete"
+						type="Transparent"/>
+					<m:Button
+						text="Copy"
+						type="Transparent"/>
+					<m:Button
+						icon="sap-icon://action"
+						type="Transparent"/>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
+				<f:Avatar src="data:image/png;base64,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"
+					displaySize="L"
+					displayShape="Square"
+					class="sapUiTinyMarginEnd">
+				</f:Avatar>
+				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+					<m:Label text="Name"/>
+                    <!-- <m:Text text="{Data1>/results/1/Name}"/> -->
+					 <m:Text text="{Data6>/0/Name}"/>
+				</m:VBox>
+				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+					<m:Label text="Gender"/>
+                    <m:Text text="{Data6>/0/Zgender}"/>
+				</m:VBox>
+				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+					<m:Label text="City"/>
+                    <m:ObjectNumber number="{Data6>/0/Zcity}" emphasized="false"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent>
+        <sections>
+			<ObjectPageSection title="General Information">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+							<form:SimpleForm
+								maxContainerCols="2"
+								editable="true"
+								layout="ResponsiveGridLayout"
+								labelSpanL="12"
+								labelSpanM="12"
+								emptySpanL="0"
+								emptySpanM="0"
+								columnsL="1"
+								columnsM="1">
+								<form:content>
+									<m:Label text="Name"/>
+                                    <m:Text text="{Data6>/0/Name}"/>
+									<m:Label text="Role"/>
+                                    <m:Text text="{Data6>/0/Zemprole}"/>
+									<m:Label text="City"/>
+                                    <m:Text text="{Data6>/0/Znumber}"/>
+								</form:content>
+							</form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			
+		</sections>
+        <footer >
+			<m:OverflowToolbar class="footer">
+				<m:ToolbarSpacer/>
+				<m:Button type="Accept" text="Save"/>
+				<m:Button type="Reject" text="Cancel"/>
+			</m:OverflowToolbar>
+		</footer>
+	</ObjectPageLayout>
+  
+</mvc:View>
+ 
